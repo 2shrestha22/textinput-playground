@@ -4,8 +4,14 @@ Demo: Reanimated (UI-thread) vs standard (JS-thread) text input with formatting.
 
 ### Showcase video
 
-![Demo](text-input.mp4)
+<video width="600" controls>
+  <source src="text-input.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 **Slow motion** (to see the text change more clearly):
 
-![Demo slow motion](text-input-slow-mo.mp4)
+<video width="600" controls>
+  <source src="text-input-slow-mo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
