@@ -1,4 +1,4 @@
-import { TextInput } from "react-native";
+import { Text, TextInput, View } from "react-native";
 import Animated, {
   dispatchCommand,
   useAnimatedRef,
@@ -8,10 +8,34 @@ import Animated, {
 
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
+const textFieldStyle = {
+  height: 48,
+  width: 300,
+  paddingHorizontal: 16,
+  paddingVertical: 12,
+  borderColor: "#d1d5db",
+  borderWidth: 1,
+  borderRadius: 8,
+  backgroundColor: "#fff",
+  fontSize: 16,
+  color: "#111827",
+} as const;
+
+const labelStyle = {
+  fontSize: 14,
+  fontWeight: "500" as const,
+  color: "#374151",
+  marginBottom: 6,
+};
+
 export function ReanimatedTextInput({
   textFormatter,
+  label,
+  placeholder = "Enter text...",
 }: {
   textFormatter: (string: string) => string;
+  label?: string;
+  placeholder?: string;
 }) {
   const animatedRef = useAnimatedRef();
 
@@ -45,25 +69,18 @@ export function ReanimatedTextInput({
   );
 
   return (
-    <AnimatedTextInput
-      style={{
-        height: 48,
-        width: 300,
-        paddingHorizontal: 16,
-        paddingVertical: 12,
-        borderColor: "#d1d5db",
-        borderWidth: 1,
-        borderRadius: 8,
-        backgroundColor: "#fff",
-        fontSize: 16,
-        color: "#111827",
-        marginTop: 100,
-      }}
-      placeholder="Enter text..."
-      placeholderTextColor="#9ca3af"
-      onChange={textInputHandler}
-      ref={animatedRef}
-    />
+    <View style={{ marginTop: 100, width: 300 }}>
+      {label != null ? (
+        <Text style={labelStyle}>{label}</Text>
+      ) : null}
+      <AnimatedTextInput
+        style={textFieldStyle}
+        placeholder={placeholder}
+        placeholderTextColor="#9ca3af"
+        onChange={textInputHandler}
+        ref={animatedRef}
+      />
+    </View>
   );
 }
 
